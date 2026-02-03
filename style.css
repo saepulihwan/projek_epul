@@ -1,0 +1,70 @@
+body {
+    background-color: #3b3b8f;
+    font-family: Arial, sans-serif;
+}
+
+.data-siswa-section {
+    width: 90%;
+    margin: 40px auto;
+    background-color: #5a78ff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header h2 {
+    color: black;
+    background: #5a78ff;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.search-box input {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    width: 200px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #eee;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+.header {
+    display: flex;
+    justify-content: center;   /* bikin judul ke tengah */
+    align-items: center;
+    position: relative;
+}
+
+/* Search tetap di kanan */
+.search-box {
+    position: absolute;
+    right: 0;
+}
+
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Siswa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="data-siswa-section">
+    <div class="header">
+        <h2>Data siswa</h2>
+
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search NIPD atau Nama..."
+            >
+        </div>
+    </div>
+
+    <table id="siswaTable">
+        <thead>
+            <tr>
+                <th>NIPD</th>
+                <th>Nama siswa</th>
+                <th>Kelas</th>
+                <th>Deskripsi pelanggaran</th>
+                <th>Point</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>232410056</td>
+                <td>Abdul</td>
+                <td>XII RPL </td>
+                <td>Membuly teman sekelas</td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <td>232410078</td>
+                <td>haki</td>
+                <td>XI TKJ </td>
+                <td>Berkelahi di sekolah</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>232410066</td>
+                <td>farel</td>
+                <td>X Dkv</td>
+                <td>Membantah guru</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>232410085</td>
+                <td>Dewi Lestari</td>
+                <td>X Bidi</td>
+                <td>Merokok di lingkungan sekolah</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>232410092</td>
+                <td>Eka Pratama</td>
+                <td>XII Bidi</td>
+                <td>Berbicara kasar kepada guru</td>
+                <td>40</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+<script>
+function searchData() {
+    const keyword = document.getElementById("searchInput").value;
+
+    fetch("search.php?keyword=" + encodeURIComponent(keyword))
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.getElementById("tableBody");
+            tbody.innerHTML = "";
+
+            if (data.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align:center;">
+                            Data tidak ditemukan
+                        </td>
+                    </tr>`;
+                return;
+            }
+
+            data.forEach(item => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${item.NIPD}</td>
+                        <td>${item.Nama_siswa}</td>
+                        <td>${item.Kelas}</td>
+                        <td>${item.Deskripsi_pelanggaran}</td>
+                        <td>${item.Point}</td>
+                    </tr>
+                `;
+            });
+        });
+}
+</script>
+
+</body>
+</html>
